@@ -129,7 +129,7 @@ export default function Home() {
 
     <div className="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
       <img src="apple.png" alt="Apple Gift Card" className="h-20 mx-auto"/>
-      <img src="steam.png" alt="Steam Gift Card" className="h-20 mx-auto"/>
+      <img src="ebay.jpeg" alt="Steam Gift Card" className="h-20 mx-auto"/>
       <img src="Razergold.png" alt="Razer Gold Gift Card" className="h-20 mx-auto"/>
       <img src="xbox.jpeg" alt="Xbox Gift Card" className="h-20 mx-auto"/>
 

@@ -28,7 +28,7 @@ export default function Navbar() {
       </div>
 
       <div className="flex gap-3">
-        <a className="hover:opacity-75" href="">Home</a>
+        <a className="hover:opacity-75" href="/">Home</a>
         <a  className="hover:opacity-75"href="/sell-gift-card">Sell Gift Card</a>
         <a className="hover:opacity-75"href="/faq">FAQ</a>
         <a className="hover:opacity-75" href="/download-app">Download App</a>
