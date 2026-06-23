@@ -134,7 +134,7 @@ export default function Home() {
       <img src="xbox.jpeg" alt="Xbox Gift Card" className="h-20 mx-auto"/>
 
       <img src="ebay.jpeg" alt="eBay Gift Card" className="h-20 mx-auto"/>
-      <img src="sephora.png" alt="Sephora Gift Card" className="h-20 mx-auto"/>
+      <img src="Sephora.png" alt="Sephora Gift Card" className="h-20 mx-auto"/>
       <img src="googleplay.png" alt="Google Play Gift Card" className="h-20 mx-auto"/>
       <img src="macys.jpeg" alt="Macy’s Gift Card" className="h-20 mx-auto"/>
     </div>
