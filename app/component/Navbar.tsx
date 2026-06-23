@@ -1,44 +1,63 @@
-import Link from "next/link"
+import Link from "next/link";
 
 export default function Navbar() {
   return (
-   <header className="flex justify-between cursor-pointer items-center px-4 py-4">
-    {/* <nav className="flex  space-x-6">
-      <Link href="/" className="hover:text-gray-200">
-        Home
-      </Link>
-      <Link href="/sell-gift-card" className="hover:text-gray-200">
-        Sell Gift Card
-      </Link>
-      <Link href="/faq" className="hover:text-gray-200">
-        FAQ
-      </Link>
-      <Link href="/download-app" className="hover:text-gray-200">
-        Download App
-      </Link>
-    </nav>
-    <div className="space-x-4">
-      <button className="bg-white text-blue-600 px-4 py-2 rounded">Sign up</button>
-      <button className="bg-gray-800 text-white px-4 py-2 rounded">Log in</button>
-    </div> */}
+    <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md text-black">
+      <nav className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
 
-    <nav className="flex justify-between text-[11px]  gap-2 items-center w-full"> 
-      <div className="flex gap-2 items-center">
-        <a className="text-[16px] font-bold" href="">Carding</a>
-      </div>
+        {/* Logo */}
+        <Link
+          href="/"
+          className="text-xl font-bold text-gray-900"
+        >
+          Carding
+        </Link>
 
-      <div className="flex gap-3">
-        <a className="hover:opacity-75" href="/">Home</a>
-        <a  className="hover:opacity-75"href="/sell-gift-card">Sell Gift Card</a>
-        <a className="hover:opacity-75"href="/faq">FAQ</a>
-        <a className="hover:opacity-75" href="/download-app">Download App</a>
-      </div>
+        {/* Navigation Links */}
+        <div className="hidden md:flex items-center gap-6 text-sm">
+          <Link href="/" className="hover:text-blue-600 transition">
+            Home
+          </Link>
 
-      <div  className="flex gap-4">
-        <button className="hover:opacity-75">Sign up</button>
-        <button className="hover:opacity-75 border border-black px-2 py-1 rounded hover:bg-black hover:text-white">Log in</button>
-      </div>
-    </nav>
-  </header>
+          <Link
+            href="/sell-gift-card"
+            className="hover:text-blue-600 transition"
+          >
+            Sell Gift Card
+          </Link>
+
+          <Link
+            href="/faq"
+            className="hover:text-blue-600 transition"
+          >
+            FAQ
+          </Link>
+
+          <Link
+            href="/download-app"
+            className="hover:text-blue-600 transition"
+          >
+            Download App
+          </Link>
+        </div>
+
+        {/* Auth Buttons */}
+        <div className="flex items-center gap-3">
+          <Link
+            href="/signup"
+            className="text-sm hover:text-blue-600 transition"
+          >
+            Sign Up
+          </Link>
+
+          <Link
+            href="/login"
+            className="rounded-lg border border-gray-900 px-4 py-2 text-sm hover:bg-gray-900 hover:text-white transition"
+          >
+            Log In
+          </Link>
+        </div>
+      </nav>
+    </header>
   );
 }
