@@ -1,48 +1,25 @@
+import Footer from "../component/Footer";
 import Navbar from "../component/Navbar";
 import Image from "next/image";
+
 
 export default function Download() {
   return (
     <div>
       <Navbar />
-    <main className="min-h-screen overflow-hidden bg-gradient-to-br from-[#6887f4] via-[#6b8ff7] to-[#6dc9ff] relative">
+    <main className="min-h-screen overflow-hidden bg-linear-to-b from-[#6887f4] via-[#6b8ff7] to-[#6dc9ff] relative">
 
-      <div className="absolute inset-0 opacity-20 bg-[url('/bg-lines.png')] bg-cover bg-center"></div>
-
-      <section className="relative z-10 flex flex-col items-center justify-center text-center px-6">
-
-        <h1 className="text-white text-5xl md:text-7xl font-light leading-tight mt-20">
-          Trade faster. Earn more.
-          <br />
-          Stay secure.
-        </h1>
-
-        <p className="text-white text-xl mt-8">
-          Enjoy smoother trades, exclusive rewards, instant updates.
-        </p>
-
-        <div className="flex flex-col md:flex-row gap-6 mt-14">
-          <button className="border border-white text-white rounded-full px-10 py-4 hover:bg-white hover:text-blue-500 duration-300">
-             Get on iPhone
-          </button>
-
-          <button className="border border-white text-white rounded-full px-10 py-4 hover:bg-white hover:text-blue-500 duration-300">
-            ▶ Get on Android
-          </button>
+      <div className="flex flex-col items-center justify-center text-center  gap-4 absolute top-[25%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
+        <h1 className="text-[42px] text-white">Trade faster. Earn more. <br /> Stay secure.</h1>
+        <h2 className="text-white">Enjoy smoother trades, exclusive rewards, instant updates.</h2>
+        <div className="flex gap-4">
+         <button className="px-3 py-1 rounded-full text-[12px] border border-white text-white hover:bg-white hover:text-blue-600">Get an Iphone</button>
+         <button className="px-3 rounded-full text-[12px]  border border-white text-white hover:bg-white hover:text-blue-600">Get an Android</button>
         </div>
-
-        <div className="mt-20">
-          <Image
-            src="/phone.png"
-            alt="Phone Mockup"
-            width={650}
-            height={650}
-            priority
-            className="object-contain"
-          />
-        </div>
-      </section>
-    </main>
+      </div>
+    
+    </main> 
+    <Footer />
     </div>
   );
 }
