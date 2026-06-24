@@ -1,48 +1,162 @@
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+
 import Navbar from "../component/Navbar";
 
+import {
+  AmazonCard,
+  AppleCard,
+  SteamCard,
+  XboxCard,
+  NikeCard,
+} from "../component/GiftCardMockups";
+
+const cards = [
+  {
+    name: "Amazon",
+    rate: "1250",
+    component: <AmazonCard />,
+  },
+  {
+    name: "Apple",
+    rate: "1200",
+    component: <AppleCard />,
+  },
+  {
+    name: "Steam",
+    rate: "1180",
+    component: <SteamCard />,
+  },
+  {
+    name: "Xbox",
+    rate: "1150",
+    component: <XboxCard />,
+  },
+  {
+    name: "Nike",
+    rate: "1100",
+    component: <NikeCard />,
+  },
+];
+
 export default function Sell() {
+  const router = useRouter();
+
+  const [selectedCard, setSelectedCard] = useState(cards[0]);
+  const [amount, setAmount] = useState("");
+
+  const totalPrice = amount
+    ? Number(amount) * Number(selectedCard.rate)
+    : 0;
+
+  const goToCheckout = () => {
+    if (!amount || Number(amount) <= 0) {
+      alert("Please enter a valid amount");
+      return;
+    }
+
+    router.push(
+      `/checkout?card=${selectedCard.name}&amount=${amount}&price=${totalPrice}`
+    );
+  };
+
   return (
-    <div>
-    <Navbar/>
-    <main className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-8">
-    
-    <aside className="bg-white rounded-lg shadow p-6">
-      <h2 className="text-xl font-semibold text-gray-800 mb-4">Card Categories</h2>
-      <input type="text" placeholder="Search cards..." className="w-full border rounded px-3 py-2 mb-4"/>
-      <ul className="space-y-3 text-gray-700">
-        <li className="flex justify-between"><span>Apple (iTunes)</span><span>₦1158.62 (+0.17%)</span></li>
-        <li className="flex justify-between"><span>Steam</span><span>₦896.67 (-23.93%)</span></li>
-        <li className="flex justify-between"><span>Razer Gold</span><span>₦1144.52 (-0.09%)</span></li>
-        <li className="flex justify-between"><span>Xbox</span><span>₦977.27 (+1.04%)</span></li>
-        <li className="flex justify-between"><span>eBay</span><span>₦775.77 (-1.28%)</span></li>
-        <li className="flex justify-between"><span>Sephora</span><span>₦1041.95 (+0.02%)</span></li>
-        <li className="flex justify-between"><span>Google</span><span>₦443.3 (+4.76%)</span></li>
-        <li className="flex justify-between"><span>Vanilla</span><span>₦685.1 (+25.93%)</span></li>
-        <li className="flex justify-between"><span>American Express</span><span>₦403 (-33.33%)</span></li>
-        <li className="flex justify-between"><span>VISA</span><span>₦1158.62 (+0.17%)</span></li>
-        <li className="flex justify-between"><span>Nordstrom</span><span>₦896.67 (-23.93%)</span></li>
-        <li className="flex justify-between"><span>Footlocker</span><span>₦1144.52 (-0.09%)</span></li>
-        <li className="flex justify-between"><span>Marcys</span><span>₦977.27 (+1.04%)</ span></li>
-        <li className="flex justify-between"><span>Nike</span><span>₦775.77 (-1.28%)</span></li>
-        <li className="flex justify-between"><span>Gamestop</span><span>₦1041.95 (+0.02%)</span></li>
-        <li className="flex justify-between"><span>PlayStation</span><span>₦443.3 (+4.76%)</span></li>
-        <li className="flex justify-between"><span>Roblox</span><span>₦685.1 (+25.93%)</span></li>
-        <li className="flex justify-between"><span>CVS pharmacy</span><span>₦403 (-33.33%)</span></li>
-        <li className="flex justify-between"><span>Walmart giftcard</span><span>₦1158.62 (+0.17%)</span></li>
-        <li className="flex justify-between"><span>Dollar General</span><span>₦896.67 (-23.93%)</span></li>
-        <li className="flex justify-between"><span>kohl's</span><span>₦1144.52 (-0.09%)</span></li>
-        <li className="flex justify-between"><span>Target</span><span>₦977.27 (+1.04%)</span></li>
-        <li className="flex justify-between"><span>Amazon</span><span>₦775.77 (-1.28%)</ span></li>
-        <li className="flex justify-between"><span>Zift/Zillons</span><span>₦1041.95 (+0.02%)</span></li>
-      </ul>
-    </aside>
+    <div className="min-h-screen bg-slate-950 text-white">
+      <Navbar />
 
-    <section className="md:col-span-2 flex flex-col items-center justify-center bg-white rounded-lg shadow p-12 text-center">
-      <img src="data:image/png;base64,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" alt="Illustration" className="w-40 h-auto mb-6"/>
-      <p className="text-lg text-gray-600">Please select a card from the list on the left to start selling.</p>
-    </section>
+      <main className="max-w-7xl mx-auto px-6 py-12 grid md:grid-cols-3 gap-8">
+        {/* LEFT PANEL */}
+        <div className="bg-slate-900 rounded-3xl p-6 border border-slate-800">
+          <h2 className="text-2xl font-bold mb-6">
+            Gift Cards
+          </h2>
 
-  </main>
-  </div>
+          <div className="grid grid-cols-2 gap-4">
+            {cards.map((card) => (
+              <div
+                key={card.name}
+                onClick={() => setSelectedCard(card)}
+                className={`cursor-pointer rounded-2xl p-4 border transition-all ${
+                  selectedCard.name === card.name
+                    ? "bg-indigo-600 border-indigo-400"
+                    : "bg-slate-800 border-slate-700 hover:border-indigo-500"
+                }`}
+              >
+                <h3 className="font-semibold">
+                  {card.name}
+                </h3>
+
+                <p className="text-green-400">
+                  ₦{card.rate}/$
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* RIGHT PANEL */}
+        <div className="md:col-span-2 bg-slate-900 rounded-3xl p-8 border border-slate-800">
+          <div className="flex justify-center mb-8">
+            {selectedCard.component}
+          </div>
+
+          <h2 className="text-3xl font-bold mb-2">
+            Buy {selectedCard.name} Gift Card
+          </h2>
+
+          <p className="text-gray-400 mb-8">
+            Secure purchase with instant delivery.
+          </p>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            <div>
+              <label className="block mb-2">
+                Amount ($)
+              </label>
+
+              <input
+                type="number"
+                value={amount}
+                onChange={(e) => setAmount(e.target.value)}
+                placeholder="100"
+                className="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3"
+              />
+            </div>
+
+            <div>
+              <label className="block mb-2">
+                Current Rate
+              </label>
+
+              <input
+                type="text"
+                value={`₦${selectedCard.rate}/$`}
+                readOnly
+                className="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3"
+              />
+            </div>
+          </div>
+
+          <div className="mt-8 bg-slate-800 rounded-2xl p-6">
+            <p className="text-gray-400">
+              Total Price
+            </p>
+
+            <h2 className="text-5xl font-bold text-green-500 mt-2">
+              ₦{totalPrice.toLocaleString()}
+            </h2>
+          </div>
+
+          <button
+            onClick={goToCheckout}
+            className="w-full mt-8 bg-green-600 hover:bg-green-700 py-4 rounded-xl text-lg font-semibold transition"
+          >
+            Continue to Checkout
+          </button>
+        </div>
+      </main>
+    </div>
   );
 }
